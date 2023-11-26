@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "strict": true,
+    "target": "ES2015",
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "outDir": "dist",
+    "sourceMap": true,
+    "newLine": "LF",
+    "allowJs": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "removeComments": false,
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "compiler/*": [
+        "src/compiler/*"
+      ],
+      "core/*": [
+        "src/core/*"
+      ],
+      "server/*": [
+        "packages/server-renderer/src/*"
+      ],
+      "sfc/*": [
+        "packages/compiler-sfc/src/*"
+      ],
+      "shared/*": [
+        "src/shared/*"
+      ],
+      "web/*": [
+        "src/platforms/web/*"
+      ],
+      "v3": [
+        "src/v3/index"
+      ],
+      "v3/*": [
+        "src/v3/*"
+      ],
+      "types/*": [
+        "src/types/*"
+      ],
+      "vue": [
+        "src/platforms/web/entry-runtime-with-compiler"
+      ]
+    }
+  }
+}

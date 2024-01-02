@@ -1,61 +1,29 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "jsx": "preserve",
-    "strict": true,
-    "target": "ES2015",
-    "module": "ESNext",
+    "rootDir": ".",
+    "outDir": "./dist",
+    "target": "es6",
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "moduleResolution": "Node",
     "lib": [
-      "esnext",
+      "ES6",
       "dom"
     ],
-    "outDir": "dist",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "strict": true,
+    "declaration": false,
     "sourceMap": true,
-    "newLine": "LF",
-    "allowJs": true,
-    "noImplicitAny": false,
-    "noImplicitThis": false,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "removeComments": false,
-    "types": [
-      "node"
-    ],
-    "paths": {
-      "compiler/*": [
-        "src/compiler/*"
-      ],
-      "core/*": [
-        "src/core/*"
-      ],
-      "server/*": [
-        "packages/server-renderer/src/*"
-      ],
-      "sfc/*": [
-        "packages/compiler-sfc/src/*"
-      ],
-      "shared/*": [
-        "src/shared/*"
-      ],
-      "web/*": [
-        "src/platforms/web/*"
-      ],
-      "v3": [
-        "src/v3/index"
-      ],
-      "v3/*": [
-        "src/v3/*"
-      ],
-      "types/*": [
-        "src/types/*"
-      ],
-      "vue": [
-        "src/platforms/web/entry-runtime-with-compiler"
-      ]
-    }
-  }
+    "inlineSources": true,
+    "stripInternal": true,
+    "incremental": true,
+    "skipDefaultLibCheck": true,
+    "inlineSourceMap": false
+  },
+  "include": [
+    "example/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

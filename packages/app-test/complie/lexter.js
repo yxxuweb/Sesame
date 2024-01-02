@@ -1,3 +1,4 @@
+export const Add_Op = '+'
 export const Sub_Op = '-'
 export const Divide_Op = '÷'
 export const Multi_op = '×'
@@ -8,6 +9,8 @@ export const End_Curly_Bracket = '}'
 export const And_Sign = '&'
 export const And_CN_Sign = '且'
 export const Or_Sign = '|'
+
+
 export const Or_CN_Sign = '或'
 export const And_Locale = {
   'zh-CN': '且',

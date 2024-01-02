@@ -1,0 +1,20 @@
+{
+  "name": "@sesamejs/bussiness",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "types": "es/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@sesamejs/components": "^0.0.1"
+  },
+  "devDependencies": {
+    "vue": "^3.3.11"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.11"
+  }
+}

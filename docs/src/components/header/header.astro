@@ -1,0 +1,60 @@
+---
+interface Props {
+  active_id: number
+}
+
+const menu_list = [
+  {
+    id: 1,
+    label: '设计',
+    url: '/design'
+  },
+  {
+    id: 2,
+    label: '研发',
+    url: '/introduce'
+  },
+  {
+    id: 3,
+    label: '组件',
+    url: '/components/overview'
+  },
+  {
+    id: 4,
+    label: '博客',
+    url: '/blog'
+  },
+  {
+    id: 5,
+    label: '资源',
+    url: '/resources'
+  }
+]
+
+const active_id = Astro.props.active_id
+---
+
+<header class="bg-white shadow-h sticky">
+  <div class="flex justify-between h-16 align-middle">
+    <div class="p-[20px] text-center">
+      <a href="/" class="text-2xl font-bold">Astro Components</a>
+    </div>
+    <div>
+      <div></div>
+      <div class="mr-32">
+        <ul class="flex">
+          {
+            menu_list.map(item => (
+              <li
+                class:list={active_id === item.id ? ' text-sky-500' : ''}
+                class="h-16 px-3 leading-16"
+              >
+                <a href={item.url}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

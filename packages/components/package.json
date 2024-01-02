@@ -1,0 +1,14 @@
+{
+  "name": "@sesamejs/components",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/inde.mjs",
+  "types": "dist/esm/index.d.ts",
+  "devDependencies": {
+    "vue": "^3.3.11"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.11"
+  }
+}

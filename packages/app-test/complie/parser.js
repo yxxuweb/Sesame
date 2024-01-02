@@ -1,11 +1,19 @@
 /**
  * 参考扩展巴科斯范式(EBNF)
  *
+ * = 定义
+ * , 连接符
+ * ; 结束符
+ * | 或
+ * [] 可选
+ * {} 重复
+ * "" 终端字符串
+ *
  * ----> 核心结构
  * formula = mid_expr , { and_or_sign , mid_expr }
  * mid_expr = combine_expr | "(" , combine_expr , ")"
- * combine_expr = range_expr , { and_or_sign , range_expr }
- * range_expr = range_expr2 | range_expr1
+ * combinexpr = range_expr2 | range_expr1
+ * range_e_expr = range_expr , { and_or_sign , range_expr }
  * range_expr2 = dynamic_sign , gl_sign , numerical
  * range_expr1 = numerical , gl_sign , dynamic_sign , [ gl_sign , numerical ]
  *
@@ -36,8 +44,8 @@ import {
   And_Or_Config,
   createFormulaFromTokens,
   getFactorNameById
-} from '@/utils/FormulaCalcCommon.js'
-import { CalcController } from '@/utils/CalcController.js'
+} from './lexter.js'
+import { CalcController } from './lexter_parse.js'
 
 /**
  * @class
@@ -105,22 +113,14 @@ export class FormulaController {
    */
   constructor({ formula = '', factorList = [] }) {
     this.formula = formula
-    // 2023-09-01 优化,优化原因: 这种替换因子的方式,无论使用什么字符去替换,一旦因子名称等于替换的字符就会造成不加花括号也能校验成功的场景,
-    // 所以选择不替换, tokenize方法中直接针对花括号进行解析
     this.factorList = factorList
-    // this.factorList = factorList.map((v, i) => {
-    //   return new Factor({
-    //     name: v,
-    //     // TODO: 待优化,这样处理还是存在风险
-    //     id: `____${All_Factor_Char[i]}____`
-    //   })
-    // })
-    // this.do_replace()
     try {
       console.time('Tokenize formula time')
       this.tokens = tokenize(this.formula, this.factorList)
       console.timeEnd('Tokenize formula time')
       console.time('Parse formula ast time')
+
+      debugger
       this.ast = this.parser()
       console.timeEnd('Parse formula ast time')
       this.rebuildTokensForDisplay()
@@ -129,18 +129,6 @@ export class FormulaController {
     }
   }
 
-  /**
-   * @function
-   * @description 对公式做全局因子替换
-   */
-  do_replace() {
-    this.factorList.forEach((factor) => {
-      this.formula = this.formula.replaceAll(`{${factor.name}}`, factor.id)
-    })
-    // And_Or_Config.forEach((config) => {
-    //   this.formula = this.formula.replaceAll(config.name, config.id)
-    // })
-  }
 
   /**
    * @function

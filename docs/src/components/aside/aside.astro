@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string
+}
+const title = Astro.props.title
+const list = [
+  {
+    name: '组件总览'
+  },
+  {
+    name: '通用',
+    children: [
+      {
+        name: '按钮'
+      }
+    ]
+  }
+]
+---
+
+<div>
+  <ul>
+    {
+      list.map(item => {
+        return (
+          <li>
+            <div
+              class:list={item.name === title ? 'list-item-active' : ''}
+              class="list-item"
+            >
+              <a href="/components/overview">{item.name}</a>
+            </div>
+            {item.children ? (
+              <ul>
+                {item.children.map(child => (
+                  <li class="list-item">
+                    <a href="/components/overview">{child.name}</a>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </li>
+        )
+      })
+    }
+  </ul>
+</div>
+
+<style>
+  .list-item {
+    @apply flex items-center pl-10 h-10 rounded-md hover:bg-neutral-400/[.06];
+  }
+  .list-item-active {
+    @apply text-cyan-400 !bg-cyan-400/[.09];
+  }
+</style>
